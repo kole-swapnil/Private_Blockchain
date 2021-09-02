@@ -3,3 +3,15 @@ passcode - abc
 node 2 0xEAc03d0Ddba4aff04EB437515Ec38Eb43aB25B39
 passcode - def
 enode://686e8a3146987b72cd10d4fb886834cb694eae61a94cd0f80e4f1264ddd741bf271ec3b9e39d29579905731f438fc7869f0189c1d3f98fda890a9564862cd31f@127.0.0.1:0?discport=30301
+
+
+
+To start network :
+cd bnode
+bootnode -nodekey "./boot.key" -verbosity 7 -addr "127.0.0.1:30301"
+
+cd node1
+geth --networkid 8779 --datadir "./data" --bootnodes enode://686e8a3146987b72cd10d4fb886834cb694eae61a94cd0f80e4f1264ddd741bf271ec3b9e39d29579905731f438fc7869f0189c1d3f98fda890a9564862cd31f@127.0.0.1:0?discport=30301 --port 30303 --ipcdisable --syncmode full --rpc --allow-insecure-unlock --rpccorsdomain "*" --rpcport 8545 --unlock 0xF5b18D3F59a4DcFf79D4e6c9e15730094c6867A8 --password password.txt --mine console
+
+cd node2
+geth --networkid 8779 --datadir "./data" --bootnodes enode://686e8a3146987b72cd10d4fb886834cb694eae61a94cd0f80e4f1264ddd741bf271ec3b9e39d29579905731f438fc7869f0189c1d3f98fda890a9564862cd31f@127.0.0.1:0?discport=30301 --port 30304 --ipcdisable --syncmode full --rpc --allow-insecure-unlock --rpccorsdomain "*" --rpcport 8546 --unlock 0xEAc03d0Ddba4aff04EB437515Ec38Eb43aB25B39 --password password.txt console
